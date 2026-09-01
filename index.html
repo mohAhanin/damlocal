@@ -1,40 +1,182 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دم لوکال — شیراز</title>
+
+  <title>دم — شیراز</title>
+
+  <meta
+    name="description"
+    content="دم — شیراز"
+  >
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@400;500;600&family=Vazirmatn:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Estedad:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
 
+  <!-- Background video -->
+
+  <div class="background-video" aria-hidden="true">
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="images/cascara.jpg"
+    >
+      <source
+        src="video/cascara.mp4"
+        type="video/mp4"
+      >
+    </video>
+
+  </div>
+
+
   <header class="site-header">
-    <img class="mark" src="images/logo.jpg" alt="دم لوکال" width="40" height="40">
-    <a class="ig-link" href="https://www.instagram.com/damlocal/" target="_blank" rel="noopener">شیراز، ایران</a>
+
+    <a href="/" class="logo" aria-label="دم">
+      <img
+        src="images/logo.jpg"
+        alt="دم"
+      >
+    </a>
+
+    <span class="location">
+      شیراز
+    </span>
+
   </header>
+
 
   <main>
 
+    <!-- HERO -->
+
     <section class="hero">
-      <img class="hero-media" src="images/cascara.jpg" alt="دم‌آوری کاسکارا از یک کاسه‌ی شیشه‌ای در یک لیوان، روی میز آجری">
-      <p class="hero-line">نه قهوه است، نه دقیقاً چای؛ چیزی میان این دو، با عطری میوه‌ای و شیرینی ملایم.</p>
+
+      <div class="hero-content">
+
+        <span class="hero-name">
+          damlocal
+        </span>
+
+        <h1>
+          دم
+        </h1>
+
+      </div>
+
+      <div class="hero-bottom">
+
+        <span>
+          شیراز
+        </span>
+
+        <span>
+          دم‌آوری
+        </span>
+
+      </div>
+
     </section>
 
-    <section class="statement">
-      <p>بدون عجله؛ یک دم.</p>
-      <!-- Extend later: when La Marzocco / loose-leaf photos are ready, this can become
-           a two-photo craft row again — see previous version of this file for that layout. -->
+
+    <!-- CASCARA -->
+
+    <section class="cascara">
+
+      <div class="cascara-image">
+
+        <img
+          src="images/cascara.jpg"
+          alt="کاسکارا"
+        >
+
+      </div>
+
+      <div class="cascara-label">
+        کاسکارا
+      </div>
+
     </section>
 
-    <section class="find-us">
-      <img class="find-media" src="images/storefront.jpg" alt="پنجره و تابلوی دم لوکال، شیراز">
 
-      <a class="handle" dir="ltr" href="https://www.instagram.com/damlocal/" target="_blank" rel="noopener">@damlocal</a>
+    <!-- PLACE -->
+
+    <section class="place">
+
+      <div class="place-image">
+
+        <img
+          src="images/storefront.jpg"
+          alt="دم، شیراز"
+        >
+
+      </div>
+
+      <div class="place-info">
+
+        <span>
+          شیراز
+        </span>
+
+        <a
+          href="https://www.instagram.com/damlocal/"
+          target="_blank"
+          rel="noopener"
+          dir="ltr"
+        >
+          @damlocal
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- CLOSING -->
+
+    <section class="closing">
+
+      <span>
+        دم
+      </span>
+
+      <h2>
+        یک دم
+      </h2>
+
     </section>
 
   </main>
 
+
+  <footer class="site-footer">
+
+    <span>
+      دم
+    </span>
+
+    <span>
+      شیراز
+    </span>
+
+  </footer>
+
 </body>
+
 </html>

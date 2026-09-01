@@ -1,144 +1,378 @@
 :root {
-  --cream: #F3EEE4;
-  --ink: #2A2620;
-  --olive: #7D7A6C;
-  --tea: #8C5A2E;
-  --brick: #C9A788;
+  --paper: #f2ede4;
+  --ink: #292620;
+  --muted: #817a70;
+  --line: #cfc6b9;
 
-  /* Display pairing: Noto Serif Arabic carries the personality (headings,
-     the hero line), Vazirmatn stays quiet for body/UI text — same
-     display/body split the English version had with Newsreader/Work Sans. */
-  --display: "Noto Serif Arabic", serif;
-  --body: "Vazirmatn", Tahoma, sans-serif;
+  --font: "Estedad", Tahoma, sans-serif;
 }
 
-* { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* ---------- Reset ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  background: var(--cream);
+
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--body);
-  font-weight: 300;
+
+  font-family: var(--font);
+  font-weight: 400;
+
   line-height: 1.8;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 a {
-  color: var(--tea);
+  color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
 }
 
-a:hover,
-a:focus-visible {
-  border-color: var(--tea);
+
+/* ---------- Background Video ---------- */
+
+.background-video {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -2;
+
+  overflow: hidden;
+
+  background: var(--paper);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--tea);
-  outline-offset: 3px;
+.background-video video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.8;
+
+  filter: saturate(0.65);
+
+  transform: scale(1.03);
 }
+
+
+/*
+  Paper veil.
+
+  The video remains visible,
+  but the website still feels like
+  a quiet piece of paper.
+*/
+
+.background-video::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(242, 237, 228, 0.6);
+}
+
 
 /* ---------- Header ---------- */
 
 .site-header {
+  height: 68px;
+
+  padding: 0 2.5vw;
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
-  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+
+  border-bottom: 1px solid var(--line);
 }
 
-.mark {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.logo img {
+  width: 32px;
+  height: 32px;
+
   display: block;
+
+  object-fit: cover;
+
+  border-radius: 50%;
 }
 
-.ig-link {
-  font-size: 0.9rem;
-  color: var(--olive);
-  border-bottom: none;
+.location {
+  color: var(--muted);
+
+  font-size: 0.7rem;
 }
+
 
 /* ---------- Hero ---------- */
 
 .hero {
-  padding: 1rem clamp(1.5rem, 5vw, 4rem) 3.5rem;
-  max-width: 720px;
+  min-height: calc(100vh - 68px);
+
+  padding: 2.5vw;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--line);
 }
 
-.hero-media {
-  width: 100%;
-  display: block;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
+.hero-content {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
 }
 
-.hero-line {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  line-height: 1.7;
-  max-width: 30ch;
-  color: var(--ink);
+.hero-name {
+  color: var(--muted);
+
+  font-size: 0.9rem;
+
+  margin-bottom: 1.8rem;
 }
 
-/* ---------- Statement ---------- */
-
-.statement {
-  padding: 1rem clamp(1.5rem, 5vw, 4rem) 4rem;
-}
-
-.statement p {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-  max-width: 26ch;
-  color: var(--ink);
+.hero h1 {
   margin: 0;
-}
 
-/* ---------- Find us ---------- */
+  font-size: clamp(4rem, 10vw, 9rem);
 
-.find-us {
-  padding: 3rem clamp(1.5rem, 5vw, 4rem) 4rem;
-  border-top: 1px solid var(--brick);
-}
-
-.find-media {
-  width: 100%;
-  max-width: 720px;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  margin-bottom: 1.75rem;
-}
-
-.find-us h2 {
-  font-family: var(--display);
   font-weight: 500;
-  font-size: 1.7rem;
-  margin: 0 0 0.75rem;
+
+  line-height: 1;
+
+  letter-spacing: -0.07em;
 }
 
-.find-us p {
-  margin: 0 0 0.6rem;
-  color: var(--olive);
+.hero-bottom {
+  display: flex;
+
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 0.68rem;
 }
 
-.find-us .handle {
-  display: inline-block;
-  font-weight: 400;
+
+/* ---------- Cascara ---------- */
+
+.cascara {
+  min-height: 85vh;
+
+  padding: 8vw 7vw;
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.2fr;
+
+  align-items: center;
+
+  gap: 5vw;
+
+  border-bottom: 1px solid var(--line);
 }
 
-/* ---------- Reduced motion ---------- */
+.cascara-image {
+  width: min(100%, 720px);
+}
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  a { transition: none; }
+.cascara-image img {
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+}
+
+.cascara-label {
+  align-self: end;
+
+  padding-bottom: 2rem;
+
+  color: var(--muted);
+
+  font-size: 0.8rem;
+}
+
+
+/* ---------- Place ---------- */
+
+.place {
+  padding: 2.5vw;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.place-image {
+  width: min(100%, 1040px);
+
+  margin-right: auto;
+}
+
+.place-image img {
+  width: 100%;
+
+  aspect-ratio: 1040 / 500;
+
+  object-fit: cover;
+}
+
+.place-info {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 0.8rem;
+
+  color: var(--muted);
+
+  font-size: 0.68rem;
+}
+
+
+/* ---------- Closing ---------- */
+
+.closing {
+  min-height: 45vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.closing span {
+  color: var(--muted);
+
+  font-size: 0.68rem;
+}
+
+.closing h2 {
+  margin: 1rem 0 0;
+
+  font-size: clamp(2.8rem, 6vw, 5rem);
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  letter-spacing: -0.05em;
+}
+
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  height: 56px;
+
+  padding: 0 2.5vw;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 0.64rem;
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 700px) {
+
+  .site-header {
+    height: 62px;
+
+    padding: 0 5vw;
+  }
+
+
+  .hero {
+    min-height: calc(100vh - 62px);
+
+    padding: 5vw;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 20vw, 7rem);
+  }
+
+
+  .cascara {
+    min-height: auto;
+
+    padding: 6rem 5vw;
+
+    display: block;
+  }
+
+  .cascara-image {
+    width: 88%;
+
+    margin-right: auto;
+  }
+
+  .cascara-label {
+    padding: 1rem 12% 0 0;
+  }
+
+
+  .place {
+    padding: 5vw;
+  }
+
+  .place-image {
+    width: 100%;
+  }
+
+
+  .closing {
+    min-height: 42vh;
+  }
+
+
+  .background-video video {
+    object-position: center;
+  }
+
 }
