@@ -1,0 +1,144 @@
+:root {
+  --cream: #F3EEE4;
+  --ink: #2A2620;
+  --olive: #7D7A6C;
+  --tea: #8C5A2E;
+  --brick: #C9A788;
+
+  /* Display pairing: Noto Serif Arabic carries the personality (headings,
+     the hero line), Vazirmatn stays quiet for body/UI text — same
+     display/body split the English version had with Newsreader/Work Sans. */
+  --display: "Noto Serif Arabic", serif;
+  --body: "Vazirmatn", Tahoma, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+a {
+  color: var(--tea);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+a:hover,
+a:focus-visible {
+  border-color: var(--tea);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--tea);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem clamp(1.5rem, 5vw, 4rem);
+}
+
+.mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+}
+
+.ig-link {
+  font-size: 0.9rem;
+  color: var(--olive);
+  border-bottom: none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 1rem clamp(1.5rem, 5vw, 4rem) 3.5rem;
+  max-width: 720px;
+}
+
+.hero-media {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.hero-line {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.7;
+  max-width: 30ch;
+  color: var(--ink);
+}
+
+/* ---------- Statement ---------- */
+
+.statement {
+  padding: 1rem clamp(1.5rem, 5vw, 4rem) 4rem;
+}
+
+.statement p {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  max-width: 26ch;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ---------- Find us ---------- */
+
+.find-us {
+  padding: 3rem clamp(1.5rem, 5vw, 4rem) 4rem;
+  border-top: 1px solid var(--brick);
+}
+
+.find-media {
+  width: 100%;
+  max-width: 720px;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: 1.75rem;
+}
+
+.find-us h2 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.7rem;
+  margin: 0 0 0.75rem;
+}
+
+.find-us p {
+  margin: 0 0 0.6rem;
+  color: var(--olive);
+}
+
+.find-us .handle {
+  display: inline-block;
+  font-weight: 400;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a { transition: none; }
+}
