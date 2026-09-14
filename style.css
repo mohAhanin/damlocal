@@ -151,15 +151,22 @@ a {
 
 .brand-link {
     display: flex;
-
-    align-items: baseline;
+    align-items: center; /* Changed from baseline to center for images */
     gap: 12px;
-
     color: #fff;
-
     font-size: 0.72rem;
 }
 
+/* Add this new block for your logo */
+.brand-logo {
+    height: 28px; /* Adjust height as needed */
+    width: 28px;  /* Make width equal to height for a perfect circle */
+    display: block;
+    border-radius: 50%; /* This cuts the corners to make it a circle */
+    object-fit: cover; /* Ensures the logo fills the circle without stretching */
+}
+
+/* You can remove or keep these old span rules */
 .brand-link span:first-child {
     font-size: 1.05rem;
     font-weight: 500;
@@ -168,6 +175,15 @@ a {
 .brand-link span:last-child {
     opacity: 0.72;
 }
+
+.brand-link span:first-child {
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+/* 
+.brand-link span:last-child {
+    opacity: 0.72;
+} */
 
 
 /* ==================================================
