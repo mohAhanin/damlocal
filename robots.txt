@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohahanin.github.io/damlocal/sitemap.xml
