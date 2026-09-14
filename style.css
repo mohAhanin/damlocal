@@ -1,594 +1,544 @@
 :root {
-  --paper: #f2ede4;
-  --ink: #292620;
-  --muted: #817a70;
-  --line: #cfc6b9;
+    --paper: #f2ede4;
+    --ink: #292620;
+    --muted: #817a70;
 
-  --font: "Estedad", Tahoma, sans-serif;
+    --font: "Estedad", Tahoma, sans-serif;
 
-  /* Three deliberate section sizes instead of arbitrary per-section values */
-  --size-full: calc(100vh - 68px);
-  --size-standard: 90vh;
-  --size-compact: 45vh;
+    /*
+        One visual rhythm for the entire website.
+        Every motion section has exactly the same height.
+    */
+    --motion-size: 78svh;
+
+    --size-full: 100svh;
+    --size-standard: 72svh;
+    --size-compact: 52svh;
+
+    --side-space: 22px;
 }
 
 
-/* ---------- Reset ---------- */
+/* ==================================================
+   RESET
+================================================== */
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 
-  background: var(--paper);
-  color: var(--ink);
+    background: var(--paper);
+    color: var(--ink);
 
-  font-family: var(--font);
-  font-weight: 400;
+    font-family: var(--font);
+    font-weight: 400;
 
-  line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
 
-  -webkit-font-smoothing: antialiased;
+main {
+    width: 100%;
 }
 
 img,
 video {
-  display: block;
-  max-width: 100%;
+    display: block;
+    width: 100%;
+}
+
+img {
+    object-fit: cover;
+}
+
+video {
+    object-fit: cover;
+}
+
+figure {
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 
-/* ---------- Background Video ---------- */
+/* ==================================================
+   MOTION SYSTEM
+================================================== */
 
-.background-video {
-  position: fixed;
+.motion-section {
+    position: relative;
 
-  inset: 0;
+    width: 100%;
+    height: var(--motion-size);
 
-  z-index: -2;
+    min-height: 560px;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  background: var(--paper);
+    isolation: isolate;
+
+    color: #fff;
 }
 
-.background-video video {
-  width: 100%;
-  height: 100%;
+.motion-video {
+    position: absolute;
+    inset: 0;
 
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
 
-  opacity: 0.8;
+    object-fit: cover;
 
-  filter: saturate(0.65);
+    /*
+        Same visual treatment for every video.
+        No individual video gets a different visual weight.
+    */
+    filter:
+        saturate(0.55)
+        brightness(0.68)
+        contrast(0.94);
 
-  transform: scale(1.03);
+    z-index: -2;
+}
+
+.motion-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(41, 38, 32, 0.28),
+            rgba(41, 38, 32, 0.08) 45%,
+            rgba(41, 38, 32, 0.34)
+        );
+
+    z-index: -1;
+
+    pointer-events: none;
 }
 
 
-/*
-  Paper veil.
-
-  The video remains visible,
-  but the website still feels like
-  a quiet piece of paper.
-*/
-
-.background-video::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(242, 237, 228, 0.6);
-}
-
-
-/* ---------- Header ---------- */
+/* ==================================================
+   HEADER
+================================================== */
 
 .site-header {
-  height: 68px;
+    position: absolute;
 
-  padding: 0 2.5vw;
+    top: 0;
+    right: 0;
+    left: 0;
 
-  display: flex;
+    z-index: 2;
 
-  align-items: center;
+    display: flex;
+    justify-content: flex-start;
 
-  justify-content: space-between;
-
-  border-bottom: 1px solid var(--line);
+    padding: 24px var(--side-space);
 }
 
-.logo img {
-  width: 32px;
-  height: 32px;
+.brand-link {
+    display: flex;
 
-  display: block;
+    align-items: baseline;
+    gap: 12px;
 
-  object-fit: cover;
+    color: #fff;
 
-  border-radius: 50%;
+    font-size: 0.72rem;
 }
 
-.location {
-  color: var(--muted);
+.brand-link span:first-child {
+    font-size: 1.05rem;
+    font-weight: 500;
+}
 
-  font-size: 0.7rem;
+.brand-link span:last-child {
+    opacity: 0.72;
 }
 
 
-/* ---------- Hero ---------- */
-
-.hero {
-  min-height: var(--size-full);
-
-  padding: 2.5vw;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-
-  border-bottom: 1px solid var(--line);
-}
+/* ==================================================
+   HERO
+================================================== */
 
 .hero-content {
-  flex: 1;
+    position: absolute;
 
-  display: flex;
+    top: 50%;
+    left: 50%;
 
-  flex-direction: column;
+    transform: translate(-50%, -50%);
 
-  justify-content: center;
+    width: calc(100% - 44px);
 
-  align-items: center;
-
-  text-align: center;
+    text-align: center;
 }
 
-.hero-name {
-  color: var(--muted);
+.hero-label {
+    display: block;
 
-  font-size: 0.9rem;
+    margin-bottom: 16px;
 
-  margin-bottom: 1.8rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+
+    opacity: 0.72;
 }
 
-.hero h1 {
-  margin: 0;
+.hero-content h1 {
+    margin: 0;
 
-  font-size: clamp(4rem, 10vw, 9rem);
+    font-size: clamp(5rem, 25vw, 8rem);
+    font-weight: 400;
 
-  font-weight: 500;
+    line-height: 0.95;
 
-  line-height: 1;
-
-  letter-spacing: -0.07em;
+    letter-spacing: -0.08em;
 }
 
-.hero-bottom {
-  display: flex;
+.hero-content p {
+    margin: 24px 0 0;
 
-  justify-content: space-between;
+    font-size: 0.78rem;
 
-  color: var(--muted);
-
-  font-size: 0.68rem;
+    opacity: 0.86;
 }
 
+.hero-meta {
+    position: absolute;
 
-/* ---------- Craft ---------- */
+    right: var(--side-space);
+    bottom: 24px;
+    left: var(--side-space);
 
-.craft {
-  min-height: var(--size-standard);
+    display: flex;
+    justify-content: space-between;
 
-  padding: 2.5vw;
+    font-size: 0.68rem;
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-bottom: 1px solid var(--line);
-}
-
-.craft-grid {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 2vw;
-
-  width: 100%;
-
-  max-width: 820px;
-}
-
-.craft-item img {
-  width: 100%;
-
-  aspect-ratio: 4 / 5;
-
-  object-fit: cover;
-
-  display: block;
+    opacity: 0.78;
 }
 
 
-/* ---------- Cascara ---------- */
+/* ==================================================
+   GENERAL CONTENT
+================================================== */
 
-.cascara {
-  min-height: var(--size-standard);
-
-  padding: 8vw 7vw;
-
-  display: grid;
-
-  grid-template-columns: 1fr 0.2fr;
-
-  align-items: center;
-
-  gap: 5vw;
-
-  border-bottom: 1px solid var(--line);
-}
-
-.cascara-image {
-  width: min(100%, 720px);
-}
-
-.cascara-image img {
-  width: 100%;
-
-  aspect-ratio: 4 / 5;
-
-  object-fit: cover;
-}
-
-.cascara-label {
-  align-self: end;
-
-  padding-bottom: 2rem;
-
-  color: var(--muted);
-
-  font-size: 0.8rem;
+.content-section {
+    background: var(--paper);
 }
 
 
-/* ---------- Place ---------- */
+/* ==================================================
+   CRAFT
+================================================== */
 
-.place {
-  position: relative;
-
-  overflow: hidden;
-
-  min-height: var(--size-standard);
-
-  padding: 2.5vw;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  border-bottom: 1px solid var(--line);
+.craft-section {
+    padding:
+        clamp(55px, 12vw, 100px)
+        var(--side-space)
+        clamp(70px, 15vw, 120px);
 }
 
-.place-video-bg {
-  position: absolute;
+.craft-images {
+    display: grid;
 
-  inset: 0;
+    grid-template-columns: 1fr 1fr;
 
-  z-index: 0;
+    gap: 7px;
 }
 
-.place-video-bg video {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  opacity: 0.7;
-
-  filter: saturate(0.6);
+.craft-images figure {
+    overflow: hidden;
 }
 
-.place-video-bg::after {
-  content: "";
+.craft-images img {
+    width: 100%;
+    aspect-ratio: 0.78;
 
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(242, 237, 228, 0.72);
+    object-fit: cover;
 }
 
-.place-image,
-.place-meta {
-  position: relative;
-  z-index: 1;
+
+/* ==================================================
+   MOTION 02 — PLACE
+================================================== */
+
+.place-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        24px
+        var(--side-space)
+        30px;
 }
 
 .place-image {
-  width: min(100%, 1040px);
+    width: 52%;
 
-  margin-right: auto;
+    overflow: hidden;
 }
 
 .place-image img {
-  width: 100%;
+    aspect-ratio: 0.78;
 
-  aspect-ratio: 1040 / 500;
+    object-fit: cover;
+}
 
-  object-fit: cover;
+.place-info {
+    width: 40%;
+
+    padding-bottom: 4px;
+
+    font-size: 0.72rem;
+
+    line-height: 2;
+
+    text-align: right;
+}
+
+.place-info p {
+    margin: 0 0 12px;
+}
+
+.place-info p:last-child {
+    margin-bottom: 0;
 }
 
 
-/*
-  Three details in one line, right-aligned.
-  flex-wrap: wrap allows them to wrap if the screen is too narrow.
-*/
+/* ==================================================
+   CASCARA
+================================================== */
 
-.place-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* In RTL, flex-start = right side */
-  gap: 0.5rem 1.5rem;          /* vertical & horizontal spacing */
-  padding-top: 0.8rem;
-  color: var(--muted);
-  font-size: 0.68rem;
-  line-height: 1.8;
+.cascara-section {
+    padding:
+        80px
+        var(--side-space)
+        110px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cascara-image {
+    width: 82%;
+
+    overflow: hidden;
+}
+
+.cascara-image img {
+    aspect-ratio: 0.78;
+}
+
+.instagram-link {
+    margin-top: 28px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 0.68rem;
+
+    direction: ltr;
+
+    opacity: 0.68;
+
+    transition: opacity 200ms ease;
+}
+
+.instagram-link:hover {
+    opacity: 1;
 }
 
 
-/* ---------- Closing ---------- */
+/* ==================================================
+   MOTION 03 — CLOSING
+================================================== */
 
-.closing {
-  position: relative;
+.closing-content {
+    position: absolute;
+    inset: 0;
 
-  overflow: hidden;
+    display: flex;
 
-  min-height: var(--size-compact);
+    flex-direction: column;
 
-  display: flex;
+    justify-content: center;
+    align-items: center;
 
-  flex-direction: column;
-
-  justify-content: center;
-
-  align-items: center;
-
-  border-bottom: 1px solid var(--line);
+    text-align: center;
 }
 
-.closing-video {
-  position: absolute;
+.closing-content h2 {
+    margin: 0;
 
-  inset: 0;
+    font-size: clamp(5rem, 25vw, 8rem);
 
-  z-index: 0;
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -0.08em;
 }
 
-.closing-video video {
-  width: 100%;
-  height: 100%;
+.closing-content p {
+    margin: 20px 0 0;
 
-  object-fit: cover;
+    font-size: 0.78rem;
 
-  opacity: 0.7;
-
-  filter: saturate(0.6);
-}
-
-.closing-video::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(242, 237, 228, 0.72);
-}
-
-.closing span,
-.closing h2 {
-  position: relative;
-  z-index: 1;
-}
-
-.closing span {
-  color: var(--muted);
-
-  font-size: 0.68rem;
-}
-
-.closing h2 {
-  margin: 1rem 0 0;
-
-  font-size: clamp(2.8rem, 6vw, 5rem);
-
-  font-weight: 300;
-
-  line-height: 1;
-
-  letter-spacing: -0.05em;
+    opacity: 0.82;
 }
 
 
-/* ---------- Reveal motion ---------- */
+/* ==================================================
+   FOOTER
+================================================== */
 
-/*
-  Base state is visible — JS only adds the "pending" (hidden) state
-  once it confirms motion is allowed. No-JS and reduced-motion users
-  always see content immediately, no flash of hidden content.
-*/
+.site-footer {
+    display: flex;
 
-.reveal-pending[data-reveal="rise"] {
-  opacity: 0;
-  transform: translateY(16px);
-}
+    justify-content: space-between;
 
-.reveal-pending[data-reveal="breathe"] {
-  opacity: 0;
-  transform: scale(0.97);
-}
+    padding: 20px var(--side-space);
 
-.reveal-in {
-  opacity: 1;
-  transform: none;
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
+    background: var(--paper);
 
-[data-reveal="breathe"].reveal-in {
-  transition-duration: 1.6s;
-  transition-timing-function: ease-out;
-}
+    color: var(--muted);
 
-.reveal-delay-1 {
-  transition-delay: 0.15s;
+    font-size: 0.62rem;
+
+    letter-spacing: 0.05em;
 }
 
 
-/* ---------- Reduced motion ---------- */
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 699px) {
+
+    :root {
+        --motion-size: 78svh;
+
+        --size-full: 92svh;
+        --size-standard: 68svh;
+        --size-compact: 48svh;
+
+        --side-space: 20px;
+    }
+
+    .motion-section {
+        min-height: 520px;
+    }
+
+    .hero-content h1,
+    .closing-content h2 {
+        font-size: 23vw;
+    }
+
+    .craft-section {
+        padding-top: 65px;
+        padding-bottom: 85px;
+    }
+
+    .cascara-section {
+        padding-top: 65px;
+        padding-bottom: 90px;
+    }
+}
+
+
+/* ==================================================
+   VERY SMALL PHONES
+================================================== */
+
+@media (max-width: 360px) {
+
+    :root {
+        --side-space: 17px;
+    }
+
+    .motion-section {
+        min-height: 500px;
+    }
+
+    .place-content {
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    .hero-content p {
+        font-size: 0.7rem;
+    }
+
+    .place-info {
+        font-size: 0.67rem;
+    }
+}
+
+
+/* ==================================================
+   DESKTOP — KEEP MOBILE ART DIRECTION
+================================================== */
+
+@media (min-width: 700px) {
+
+    body {
+        max-width: 480px;
+        margin: 0 auto;
+
+        box-shadow:
+            0 0 50px rgba(0, 0, 0, 0.08);
+    }
+
+    :root {
+        --motion-size: 760px;
+    }
+
+    .motion-section {
+        min-height: 760px;
+    }
+}
+
+
+/* ==================================================
+   REDUCED MOTION
+================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-  .background-video video,
-  .closing-video video,
-  .place-video-bg video {
-    display: none;
-  }
+    html {
+        scroll-behavior: auto;
+    }
 
-  .background-video {
-    background: var(--paper);
-  }
-
-  .closing-video,
-  .place-video-bg {
-    background: var(--line);
-  }
-
-}
-
-
-/* ---------- Footer ---------- */
-
-.site-footer {
-  height: 56px;
-
-  padding: 0 2.5vw;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  color: var(--muted);
-
-  font-size: 0.64rem;
-}
-
-
-/* ---------- Mobile ---------- */
-
-@media (max-width: 700px) {
-
-  :root {
-    --size-full: calc(100vh - 62px);
-    --size-standard: auto;
-    --size-compact: 42vh;
-  }
-
-  .site-header {
-    height: 62px;
-
-    padding: 0 5vw;
-  }
-
-
-  .hero {
-    padding: 5vw;
-  }
-
-  .hero h1 {
-    font-size: clamp(4rem, 20vw, 7rem);
-  }
-
-
-  .craft {
-    padding: 6rem 5vw;
-
-    min-height: auto;
-  }
-
-  .craft-grid {
-    grid-template-columns: 1fr;
-
-    gap: 8vw;
-
-    max-width: 100%;
-  }
-
-
-  .cascara {
-    padding: 6rem 5vw;
-
-    display: block;
-  }
-
-  .cascara-image {
-    width: 88%;
-
-    margin-right: auto;
-  }
-
-  .cascara-label {
-    padding: 1rem 12% 0 0;
-  }
-
-
-  .place {
-    padding: 6rem 5vw;
-
-    display: block;
-  }
-
-  .place-image {
-    width: 100%;
-  }
-
-  .place-image img {
-    aspect-ratio: 1040 / 800;
-  }
-
-
-  /* On narrow screens, allow items to wrap, but keep them right-aligned */
-  .place-meta {
-    gap: 0.3rem 1rem;
-    padding-top: 0.6rem;
-  }
-
-
-  .background-video video {
-    object-position: center;
-  }
-
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
