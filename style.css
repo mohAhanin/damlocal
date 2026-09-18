@@ -19,6 +19,13 @@
 }
 
 
+.craft-section .instagram-link {
+    display: block;
+    text-align: center;
+    margin-top: 0;       /* Removes the top margin it had in the Cascara section */
+    margin-bottom: 24px; /* Adds space between the handle and the images */
+}
+
 /* ==================================================
    RESET
 ================================================== */
