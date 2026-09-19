@@ -1,3 +1,8 @@
+
+/* ==================================================
+   VARIABLES
+================================================== */
+
 :root {
     --paper: #f2ede4;
     --ink: #292620;
@@ -5,26 +10,11 @@
 
     --font: "Estedad", Tahoma, sans-serif;
 
-    /*
-        One visual rhythm for the entire website.
-        Every motion section has exactly the same height.
-    */
-    --motion-size: 78svh;
+    --side-space: 20px;
 
-    --size-full: 100svh;
-    --size-standard: 72svh;
-    --size-compact: 52svh;
-
-    --side-space: 22px;
+    --motion-size: 100svh;
 }
 
-
-.craft-section .instagram-link {
-    display: block;
-    text-align: center;
-    margin-top: 0;       /* Removes the top margin it had in the Cascara section */
-    margin-bottom: 24px; /* Adds space between the handle and the images */
-}
 
 /* ==================================================
    RESET
@@ -80,7 +70,7 @@ a {
 
 
 /* ==================================================
-   MOTION SYSTEM
+   MOTION SECTIONS
 ================================================== */
 
 .motion-section {
@@ -92,11 +82,13 @@ a {
     min-height: 560px;
 
     overflow: hidden;
-
     isolation: isolate;
 
     color: #fff;
 }
+
+
+/* Video */
 
 .motion-video {
     position: absolute;
@@ -107,10 +99,6 @@ a {
 
     object-fit: cover;
 
-    /*
-        Same visual treatment for every video.
-        No individual video gets a different visual weight.
-    */
     filter:
         saturate(0.55)
         brightness(0.68)
@@ -118,6 +106,9 @@ a {
 
     z-index: -2;
 }
+
+
+/* Overlay */
 
 .motion-overlay {
     position: absolute;
@@ -128,7 +119,7 @@ a {
             to bottom,
             rgba(41, 38, 32, 0.28),
             rgba(41, 38, 32, 0.08) 45%,
-            rgba(41, 38, 32, 0.34)
+            rgba(41, 38, 32, 0.40)
         );
 
     z-index: -1;
@@ -151,46 +142,51 @@ a {
     z-index: 2;
 
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
 
     padding: 24px var(--side-space);
 }
 
 .brand-link {
     display: flex;
-    align-items: center; /* Changed from baseline to center for images */
-    gap: 12px;
-    color: #fff;
-    font-size: 0.72rem;
+    align-items: center;
 }
 
-/* Add this new block for your logo */
 .brand-logo {
-    height: 28px; /* Adjust height as needed */
-    width: 28px;  /* Make width equal to height for a perfect circle */
-    display: block;
-    border-radius: 50%; /* This cuts the corners to make it a circle */
-    object-fit: cover; /* Ensures the logo fills the circle without stretching */
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
 }
 
-/* You can remove or keep these old span rules */
-.brand-link span:first-child {
-    font-size: 1.05rem;
-    font-weight: 500;
+
+/* Menu */
+
+.landing-menu-link {
+    padding: 7px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 100px;
+
+    color: #fff;
+
+    font-size: 0.68rem;
+
+    transition:
+        background 250ms ease,
+        color 250ms ease,
+        border-color 250ms ease;
 }
 
-.brand-link span:last-child {
-    opacity: 0.72;
-}
+.landing-menu-link:hover {
+    background: #fff;
+    border-color: #fff;
 
-.brand-link span:first-child {
-    font-size: 1.05rem;
-    font-weight: 500;
+    color: var(--ink);
 }
-/* 
-.brand-link span:last-child {
-    opacity: 0.72;
-} */
 
 
 /* ==================================================
@@ -203,11 +199,11 @@ a {
     top: 50%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
-
     width: calc(100% - 44px);
 
     text-align: center;
+
+    transform: translate(-50%, -50%);
 }
 
 .hero-label {
@@ -215,11 +211,7 @@ a {
 
     margin-bottom: 16px;
 
-    font-family: Arial, sans-serif;
-    font-size: 0.62rem;
-
-    letter-spacing: 0.2em;
-
+    font-size: 0.68rem;
     opacity: 0.72;
 }
 
@@ -230,7 +222,6 @@ a {
     font-weight: 400;
 
     line-height: 0.95;
-
     letter-spacing: -0.08em;
 }
 
@@ -238,68 +229,12 @@ a {
     margin: 24px 0 0;
 
     font-size: 0.78rem;
-
     opacity: 0.86;
 }
 
-.hero-meta {
-    position: absolute;
-
-    right: var(--side-space);
-    bottom: 24px;
-    left: var(--side-space);
-
-    display: flex;
-    justify-content: space-between;
-
-    font-size: 0.68rem;
-
-    opacity: 0.78;
-}
-
 
 /* ==================================================
-   GENERAL CONTENT
-================================================== */
-
-.content-section {
-    background: var(--paper);
-}
-
-
-/* ==================================================
-   CRAFT
-================================================== */
-
-.craft-section {
-    padding:
-        clamp(55px, 12vw, 100px)
-        var(--side-space)
-        clamp(70px, 15vw, 120px);
-}
-
-.craft-images {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 7px;
-}
-
-.craft-images figure {
-    overflow: hidden;
-}
-
-.craft-images img {
-    width: 100%;
-    aspect-ratio: 0.78;
-
-    object-fit: cover;
-}
-
-
-/* ==================================================
-   MOTION 02 — PLACE
+   PLACE SECTION
 ================================================== */
 
 .place-content {
@@ -307,9 +242,7 @@ a {
     inset: 0;
 
     display: flex;
-
     align-items: flex-end;
-
     justify-content: space-between;
 
     gap: 20px;
@@ -338,7 +271,6 @@ a {
     padding-bottom: 4px;
 
     font-size: 0.72rem;
-
     line-height: 2;
 
     text-align: right;
@@ -354,18 +286,55 @@ a {
 
 
 /* ==================================================
-   CASCARA
+   CLOSING
+================================================== */
+
+.closing-content {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.closing-content h2 {
+    margin: 0;
+
+    font-size: clamp(5rem, 25vw, 8rem);
+    font-weight: 400;
+
+    line-height: 1;
+    letter-spacing: -0.08em;
+}
+
+.closing-content p {
+    margin: 20px 0 0;
+
+    font-size: 0.78rem;
+    opacity: 0.82;
+}
+
+
+/* ==================================================
+   STILL IMAGE
 ================================================== */
 
 .cascara-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     padding:
         80px
         var(--side-space)
         110px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: var(--paper);
 }
 
 .cascara-image {
@@ -382,11 +351,9 @@ a {
     margin-top: 28px;
 
     font-family: Arial, sans-serif;
-
     font-size: 0.68rem;
 
     direction: ltr;
-
     opacity: 0.68;
 
     transition: opacity 200ms ease;
@@ -398,83 +365,60 @@ a {
 
 
 /* ==================================================
-   MOTION 03 — CLOSING
-================================================== */
-
-.closing-content {
-    position: absolute;
-    inset: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-}
-
-.closing-content h2 {
-    margin: 0;
-
-    font-size: clamp(5rem, 25vw, 8rem);
-
-    font-weight: 400;
-
-    line-height: 1;
-
-    letter-spacing: -0.08em;
-}
-
-.closing-content p {
-    margin: 20px 0 0;
-
-    font-size: 0.78rem;
-
-    opacity: 0.82;
-}
-
-
-/* ==================================================
    FOOTER
 ================================================== */
 
 .site-footer {
     display: flex;
-
     justify-content: space-between;
 
     padding: 20px var(--side-space);
 
     background: var(--paper);
-
     color: var(--muted);
 
     font-size: 0.62rem;
-
-    letter-spacing: 0.05em;
 }
 
 
 /* ==================================================
-   RESPONSIVE
+   SCROLL REVEAL
+================================================== */
+
+.reveal-section {
+    opacity: 0;
+
+    transform:
+        translateY(35px)
+        scale(0.985);
+
+    transition:
+        opacity 900ms ease,
+        transform 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-section.is-visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ==================================================
+   MOBILE
 ================================================== */
 
 @media (max-width: 699px) {
 
     :root {
-        --motion-size: 78svh;
-
-        --size-full: 92svh;
-        --size-standard: 68svh;
-        --size-compact: 48svh;
-
         --side-space: 20px;
+        --motion-size: 100svh;
     }
 
     .motion-section {
-        min-height: 520px;
+        min-height: 560px;
     }
 
     .hero-content h1,
@@ -482,20 +426,24 @@ a {
         font-size: 23vw;
     }
 
-    .craft-section {
-        padding-top: 65px;
-        padding-bottom: 85px;
+    .place-content {
+        padding-bottom: 26px;
+    }
+
+    .place-info {
+        font-size: 0.68rem;
     }
 
     .cascara-section {
         padding-top: 65px;
         padding-bottom: 90px;
     }
+
 }
 
 
 /* ==================================================
-   VERY SMALL PHONES
+   SMALL PHONES
 ================================================== */
 
 @media (max-width: 360px) {
@@ -504,13 +452,9 @@ a {
         --side-space: 17px;
     }
 
-    .motion-section {
-        min-height: 500px;
-    }
-
-    .place-content {
-        padding-left: 17px;
+    .site-header {
         padding-right: 17px;
+        padding-left: 17px;
     }
 
     .hero-content p {
@@ -518,13 +462,14 @@ a {
     }
 
     .place-info {
-        font-size: 0.67rem;
+        font-size: 0.64rem;
     }
+
 }
 
 
 /* ==================================================
-   DESKTOP — KEEP MOBILE ART DIRECTION
+   DESKTOP
 ================================================== */
 
 @media (min-width: 700px) {
@@ -538,12 +483,13 @@ a {
     }
 
     :root {
-        --motion-size: 760px;
+        --motion-size: 100svh;
     }
 
     .motion-section {
-        min-height: 760px;
+        min-height: 700px;
     }
+
 }
 
 
@@ -564,37 +510,10 @@ a {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
 
+    .reveal-section {
+        opacity: 1;
+        transform: none;
+    }
 
-/* ==================================================
-   LANDING MENU LINK
-================================================== */
-
-.landing-menu-link {
-    position: absolute;
-
-    top: 24px;
-    left: var(--side-space);
-
-    padding: 7px 13px;
-
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 100px;
-
-    color: #fff;
-
-    font-size: 0.68rem;
-
-    transition:
-        background 200ms ease,
-        color 200ms ease,
-        border-color 200ms ease;
-}
-
-.landing-menu-link:hover {
-    background: #fff;
-    border-color: #fff;
-
-    color: var(--ink);
 }
