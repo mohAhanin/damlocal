@@ -1,0 +1,278 @@
+
+/* ==================================================
+   MENU PAGE
+================================================== */
+
+.menu-page {
+    min-height: 100vh;
+
+    background: var(--paper);
+    color: var(--ink);
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 24px var(--side-space);
+
+    border-bottom: 1px solid var(--line);
+}
+
+.menu-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 0.72rem;
+
+    transition: color 200ms ease;
+}
+
+.menu-back:hover {
+    color: var(--ink);
+}
+
+.menu-logo {
+    display: block;
+
+    width: 30px;
+    height: 30px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+}
+
+.menu-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* ==================================================
+   INTRO
+================================================== */
+
+.menu-intro {
+    padding:
+        70px
+        var(--side-space)
+        55px;
+}
+
+.menu-eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: var(--muted);
+
+    font-size: 0.68rem;
+}
+
+.menu-intro h1 {
+    margin: 0;
+
+    font-size: clamp(3.8rem, 18vw, 6rem);
+    font-weight: 400;
+
+    line-height: 1;
+    letter-spacing: -0.08em;
+}
+
+.menu-intro p {
+    margin: 22px 0 0;
+
+    color: var(--muted);
+
+    font-size: 0.78rem;
+}
+
+
+/* ==================================================
+   MENU CONTENT
+================================================== */
+
+.menu-content {
+    padding:
+        0
+        var(--side-space)
+        70px;
+}
+
+
+/* ==================================================
+   CATEGORY
+================================================== */
+
+.menu-category {
+    margin-bottom: 65px;
+}
+
+.menu-category:last-child {
+    margin-bottom: 0;
+}
+
+.menu-category h2 {
+    margin: 0 0 20px;
+
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+
+/* ==================================================
+   ITEMS
+================================================== */
+
+.menu-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.menu-item:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.menu-item-info {
+    min-width: 0;
+}
+
+.menu-item h3 {
+    margin: 0;
+
+    font-size: 0.88rem;
+    font-weight: 500;
+
+    line-height: 1.8;
+}
+
+.menu-item p {
+    margin: 7px 0 0;
+
+    color: var(--muted);
+
+    font-size: 0.7rem;
+    font-weight: 400;
+
+    line-height: 1.9;
+}
+
+.menu-price {
+    flex-shrink: 0;
+
+    color: var(--ink);
+
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.menu-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding:
+        22px
+        var(--side-space);
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+
+    font-size: 0.65rem;
+}
+
+.menu-footer-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: color 200ms ease;
+}
+
+.menu-footer-back:hover {
+    color: var(--ink);
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 699px) {
+
+    .menu-intro {
+        padding-top: 60px;
+        padding-bottom: 48px;
+    }
+
+    .menu-content {
+        padding-bottom: 55px;
+    }
+
+    .menu-category {
+        margin-bottom: 55px;
+    }
+
+    .menu-item {
+        gap: 16px;
+        padding: 18px 0;
+    }
+
+    .menu-item h3 {
+        font-size: 0.84rem;
+    }
+
+    .menu-item p {
+        font-size: 0.68rem;
+    }
+
+    .menu-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .menu-header {
+        padding-right: 17px;
+        padding-left: 17px;
+    }
+
+    .menu-intro,
+    .menu-content {
+        padding-right: 17px;
+        padding-left: 17px;
+    }
+
+}

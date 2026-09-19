@@ -565,3 +565,36 @@ a {
         transition-duration: 0.01ms !important;
     }
 }
+
+
+/* ==================================================
+   LANDING MENU LINK
+================================================== */
+
+.landing-menu-link {
+    position: absolute;
+
+    top: 24px;
+    left: var(--side-space);
+
+    padding: 7px 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 100px;
+
+    color: #fff;
+
+    font-size: 0.68rem;
+
+    transition:
+        background 200ms ease,
+        color 200ms ease,
+        border-color 200ms ease;
+}
+
+.landing-menu-link:hover {
+    background: #fff;
+    border-color: #fff;
+
+    color: var(--ink);
+}
