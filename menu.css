@@ -1,278 +1,82 @@
-
-/* ==================================================
-   MENU PAGE
-================================================== */
+/* Menu page — reuses style.css (header, footer, video, veil, reveal) */
 
 .menu-page {
-    min-height: 100vh;
-
-    background: var(--paper);
-    color: var(--ink);
+    position: relative;
+    color: #fff;
 }
 
-
-/* ==================================================
-   HEADER
-================================================== */
-
-.menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 24px var(--side-space);
-
-    border-bottom: 1px solid var(--line);
+@media (max-width: 699px) {
+    body.menu-page { background: #16130f; }
 }
 
-.menu-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+/* Same video + veil as the index page, fixed behind the list and blurred */
+.menu-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
 
-    color: var(--muted);
-
-    font-size: 0.72rem;
-
-    transition: color 200ms ease;
-}
-
-.menu-back:hover {
-    color: var(--ink);
-}
-
-.menu-logo {
-    display: block;
-
-    width: 30px;
-    height: 30px;
+    max-width: 480px;
+    margin-inline: auto;
 
     overflow: hidden;
-
-    border-radius: 50%;
+    background: #16130f;
 }
 
-.menu-logo img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
+.menu-bg .motion-video {
+    filter: blur(14px) saturate(0.55) brightness(0.5);
+    transform: scale(1.1);
 }
-
-
-/* ==================================================
-   INTRO
-================================================== */
 
 .menu-intro {
-    padding:
-        70px
-        var(--side-space)
-        55px;
-}
-
-.menu-eyebrow {
-    display: block;
-
-    margin-bottom: 18px;
-
-    color: var(--muted);
-
-    font-size: 0.68rem;
+    padding: 120px var(--side-space) 10px;
+    text-align: center;
 }
 
 .menu-intro h1 {
     margin: 0;
 
-    font-size: clamp(3.8rem, 18vw, 6rem);
+    font-size: clamp(4.6rem, 23vw, 6.6rem);
     font-weight: 400;
 
-    line-height: 1;
-    letter-spacing: -0.08em;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
 }
-
-.menu-intro p {
-    margin: 22px 0 0;
-
-    color: var(--muted);
-
-    font-size: 0.78rem;
-}
-
-
-/* ==================================================
-   MENU CONTENT
-================================================== */
 
 .menu-content {
-    padding:
-        0
-        var(--side-space)
-        70px;
+    padding: 30px var(--side-space) 90px;
+    text-align: center;
 }
-
-
-/* ==================================================
-   CATEGORY
-================================================== */
 
 .menu-category {
-    margin-bottom: 65px;
+    padding: 44px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
-.menu-category:last-child {
-    margin-bottom: 0;
+.menu-category:first-child {
+    border-top: 0;
 }
 
 .menu-category h2 {
-    margin: 0 0 20px;
+    margin: 0 0 18px;
 
-    font-size: 1.05rem;
-    font-weight: 500;
-}
-
-
-/* ==================================================
-   ITEMS
-================================================== */
-
-.menu-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    gap: 24px;
-
-    padding: 20px 0;
-
-    border-bottom: 1px solid var(--line);
-}
-
-.menu-item:first-child {
-    border-top: 1px solid var(--line);
-}
-
-.menu-item-info {
-    min-width: 0;
-}
-
-.menu-item h3 {
-    margin: 0;
-
-    font-size: 0.88rem;
-    font-weight: 500;
-
-    line-height: 1.8;
-}
-
-.menu-item p {
-    margin: 7px 0 0;
-
-    color: var(--muted);
-
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 400;
 
-    line-height: 1.9;
+    opacity: 0.62;
 }
 
-.menu-price {
-    flex-shrink: 0;
+.menu-category ul {
+    margin: 0;
+    padding: 0;
 
-    color: var(--ink);
-
-    font-size: 0.75rem;
-    white-space: nowrap;
+    list-style: none;
 }
 
-
-/* ==================================================
-   FOOTER
-================================================== */
-
-.menu-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding:
-        22px
-        var(--side-space);
-
-    border-top: 1px solid var(--line);
-
-    color: var(--muted);
-
-    font-size: 0.65rem;
+.menu-category li {
+    font-size: 1.1rem;
+    line-height: 2.2;
 }
 
-.menu-footer-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    transition: color 200ms ease;
-}
-
-.menu-footer-back:hover {
-    color: var(--ink);
-}
-
-
-/* ==================================================
-   RESPONSIVE
-================================================== */
-
-@media (max-width: 699px) {
-
-    .menu-intro {
-        padding-top: 60px;
-        padding-bottom: 48px;
-    }
-
-    .menu-content {
-        padding-bottom: 55px;
-    }
-
-    .menu-category {
-        margin-bottom: 55px;
-    }
-
-    .menu-item {
-        gap: 16px;
-        padding: 18px 0;
-    }
-
-    .menu-item h3 {
-        font-size: 0.84rem;
-    }
-
-    .menu-item p {
-        font-size: 0.68rem;
-    }
-
-    .menu-footer {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
-    }
-
-}
-
-
-@media (max-width: 360px) {
-
-    .menu-header {
-        padding-right: 17px;
-        padding-left: 17px;
-    }
-
-    .menu-intro,
-    .menu-content {
-        padding-right: 17px;
-        padding-left: 17px;
-    }
-
+@media (prefers-reduced-motion: reduce) {
+    .menu-bg .motion-video { display: none; }
 }

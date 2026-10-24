@@ -5,400 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منو | دم</title>
     <meta name="description" content="منوی کافه دم؛ قهوه، نوشیدنی، کلد برو.">
-    
-    <!-- Google Fonts (Vazirmatn) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    
-    <style>
-        /* Brand Colors - Dark & Premium */
-        :root {
-            --bg-color: #0f0f0f; 
-            --surface-color: #1a1a1a; 
-            --text-main: #f5f5f5; 
-            --text-muted: #999999; 
-            --accent: #c49a6c; 
-            --border-radius: 12px;
-            --font-main: 'Vazirmatn', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Sticky Glassmorphism Header */
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 15, 15, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        
-        .brand-link:hover {
-            color: var(--accent);
-        }
-
-        .back-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s;
-        }
-
-        .back-link:hover {
-            color: var(--text-main);
-        }
-
-        /* Horizontal Scrollable Category Nav */
-        .category-nav {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            padding: 15px 20px;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .category-nav::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category-nav a {
-            background: var(--surface-color);
-            color: var(--text-muted);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .category-nav a:hover {
-            background: var(--accent);
-            color: #000;
-            border-color: var(--accent);
-        }
-
-        /* Main Layout */
-        .menu-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 20px 80px 20px;
-        }
-
-        .menu-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 120px; 
-        }
-
-        .menu-section h2 {
-            font-size: 1.3rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(196, 154, 108, 0.2);
-            padding-bottom: 10px;
-        }
-
-        /* New Table-like Layout for Menu Items */
-        .menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        /* 3-column grid for Coffee items (Name, Right Price, Left Price) */
-        .menu-item.coffee-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            align-items: center;
-            padding: 12px 16px;
-            background: var(--surface-color);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: background 0.2s;
-        }
-        
-        /* 2-column grid for Non-Coffee items (Name, Price) */
-        .menu-item.standard-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            align-items: center;
-            padding: 12px 16px;
-            background: var(--surface-color);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: background 0.2s;
-        }
-
-        .menu-item:hover {
-            background: #222222;
-        }
-
-        /* Headers for the Coffee columns */
-        .menu-header-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            padding: 0 16px 8px 16px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            margin-bottom: 8px;
-        }
-
-        .menu-header-row span {
-            text-align: center;
-        }
-
-        .menu-header-row span:first-child {
-            text-align: right; /* Item name column stays empty */
-        }
-
-        .item-name {
-            font-weight: 500;
-            font-size: 1.05rem;
-            color: var(--text-main);
-        }
-
-        .item-price {
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 600px) {
-            .site-header { padding: 12px 15px; }
-            .brand-link { font-size: 1.3rem; }
-            .category-nav { padding: 10px 15px; }
-            .menu-container { padding: 15px 15px 60px 15px; }
-            .menu-section { margin-bottom: 35px; }
-            .menu-item.coffee-item, .menu-header-row { padding-left: 10px; padding-right: 10px; }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu.css">
 </head>
-<body>
+<body class="menu-page">
 
-    <!-- Sticky Header -->
+    <div class="menu-bg" aria-hidden="true">
+        <video class="motion-video" autoplay muted loop playsinline>
+            <source src="video/cascara.mp4" type="video/mp4">
+        </video>
+        <div class="motion-overlay"></div>
+    </div>
+
     <header class="site-header">
-        <a href="index.html" class="brand-link">دم</a>
-        <a href="index.html" class="back-link">بازگشت ←</a>
+        <a href="https://instagram.com/damlocal" target="_blank" rel="noopener noreferrer" class="brand-link" aria-label="صفحه اینستاگرام دم">
+            <img src="images/logo.jpg" alt="دم" class="brand-logo">
+        </a>
+        <a href="index.html" class="landing-menu-link">بازگشت</a>
     </header>
 
-    <!-- Quick Category Navigation -->
-    <nav class="category-nav">
-        <a href="#hot-coffee">قهوه گرم</a>
-        <a href="#cold-coffee">قهوه سرد</a>
-        <a href="#brew">قهوه دمی</a>
-        <a href="#hot-drinks">گرم نوش</a>
-        <a href="#cakes">کلد برو</a>
-        <a href="#cold-drinks">سرد نوش</a>
-    </nav>
+    <main>
 
-    <main class="menu-container">
-
-        <!-- Category 1: Hot Coffee -->
-        <section id="hot-coffee" class="menu-section">
-            <h2>نوشیدنی‌های گرم بر پایه قهوه</h2>
-            
-            <!-- Table Headers -->
-            <div class="menu-header-row">
-                <span></span> <!-- Empty space for item name -->
-                <span>عربیکا ۱۰۰</span> <!-- Right Price -->
-                <span>ترکیبی</span> <!-- Left Price -->
-            </div>
-
-            <div class="menu-list">
-                <div class="menu-item coffee-item">
-                    <span class="item-name">اسپرسو</span>
-                    <span class="item-price">۲۹۰</span> <!-- Arabica -->
-                    <span class="item-price">۲۴۰</span> <!-- Blend -->
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">آمریکانو</span>
-                    <span class="item-price">۲۹۵</span>
-                    <span class="item-price">۲۴۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">ماکیاتو</span>
-                    <span class="item-price">۳۰۵</span>
-                    <span class="item-price">۲۵۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">کورتادو</span>
-                    <span class="item-price">۳۲۵</span>
-                    <span class="item-price">۲۶۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">کاپوچینو</span>
-                    <span class="item-price">۳۲۵</span>
-                    <span class="item-price">۲۶۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">لاته</span>
-                    <span class="item-price">۳۴۰</span>
-                    <span class="item-price">۲۷۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">فلت وایت</span>
-                    <span class="item-price">۳۴۰</span>
-                    <span class="item-price">۲۷۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">سینامون لته</span>
-                    <span class="item-price">۳۶۵</span>
-                    <span class="item-price">۲۹۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">موکا</span>
-                    <span class="item-price">۳۷۵</span>
-                    <span class="item-price">۳۱۰</span>
-                </div>
-            </div>
+        <section class="menu-intro">
+            <h1>منو</h1>
         </section>
 
-        <!-- Category 2: Cold Coffee -->
-        <section id="cold-coffee" class="menu-section">
-            <h2>نوشیدنی‌های سرد بر پایه قهوه</h2>
-            
-            <!-- Table Headers -->
-            <div class="menu-header-row">
-                <span></span>
-                <span>عربیکا ۱۰۰</span>
-                <span>ترکیبی</span>
-            </div>
+        <div class="menu-content">
 
-            <div class="menu-list">
-                <div class="menu-item coffee-item">
-                    <span class="item-name">آیس آمریکانو</span>
-                    <span class="item-price">۳۰۵</span>
-                    <span class="item-price">۲۵۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">آیس لاته</span>
-                    <span class="item-price">۳۵۰</span>
-                    <span class="item-price">۲۸۵</span>
-                </div>
-                <div class="menu-item coffee-item">
-                    <span class="item-name">آیس موکا</span>
-                    <span class="item-price">۳۸۵</span>
-                    <span class="item-price">۳۱۵</span>
-                </div>
-            </div>
-        </section>
+            <section class="menu-category reveal-section">
+                <h2>نوشیدنی‌های گرم بر پایه قهوه</h2>
+                <ul>
+                    <li>اسپرسو</li>
+                    <li>آمریکانو</li>
+                    <li>ماکیاتو</li>
+                    <li>کورتادو</li>
+                    <li>کاپوچینو</li>
+                    <li>لاته</li>
+                    <li>فلت وایت</li>
+                    <li>سینامون لته</li>
+                    <li>موکا</li>
+                </ul>
+            </section>
 
-        <!-- Category 3: Brew -->
-        <section id="brew" class="menu-section">
-            <h2>قهوه دمی</h2>
-            <div class="menu-list">
-                <div class="menu-item standard-item">
-                    <span class="item-name">V60</span>
-                    <span class="item-price">-</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">OREA</span>
-                    <span class="item-price">-</span>
-                </div>
-            </div>
-        </section>
+            <section class="menu-category reveal-section">
+                <h2>نوشیدنی‌های سرد بر پایه قهوه</h2>
+                <ul>
+                    <li>آیس آمریکانو</li>
+                    <li>آیس لاته</li>
+                    <li>آیس موکا</li>
+                </ul>
+            </section>
 
-        <!-- Category 4: Hot Drinks -->
-        <section id="hot-drinks" class="menu-section">
-            <h2>گرم نوش</h2>
-            <div class="menu-list">
-                <div class="menu-item standard-item">
-                    <span class="item-name">کاسکارا</span>
-                    <span class="item-price">-</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">جزمین تی</span>
-                    <span class="item-price">۲۰۰</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">چای</span>
-                    <span class="item-price">۱۰۰</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">چای هلو و زردآلو</span>
-                    <span class="item-price">۲۰۰</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">نسکوییک</span>
-                    <span class="item-price">۳۰۰</span>
-                </div>
-            </div>
-        </section>
+            <section class="menu-category reveal-section">
+                <h2>قهوه دمی</h2>
+                <ul>
+                    <li>V60</li>
+                    <li>OREA</li>
+                </ul>
+            </section>
 
-        <!-- Category 5: coldbrew -->
-        <section id="cakes" class="menu-section">
-            <h2>کلد برو</h2>
-            <div class="menu-list">
-                <div class="menu-item standard-item">
-                    <span class="item-name">کلد برو کلاسیک</span>
-                    <span class="item-price">۲۷۰</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">کلد فرنزی</span>
-                    <span class="item-price">۲۹۵</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">کلد برو انبه</span>
-                    <span class="item-price">۲۹۵</span>
-                </div>
-                <div class="menu-item standard-item">
-                    <span class="item-name">کلد برو آیریش</span>
-                    <span class="item-price">۲۹۵</span>
-                </div>
-            </div>
-        </section>
+            <section class="menu-category reveal-section">
+                <h2>گرم نوش</h2>
+                <ul>
+                    <li>کاسکارا</li>
+                    <li>جزمین تی</li>
+                    <li>چای</li>
+                    <li>چای هلو و زردآلو</li>
+                    <li>نسکوییک</li>
+                </ul>
+            </section>
 
-        <!-- Category 6: Cold Drinks -->
-        <section id="cold-drinks" class="menu-section">
-            <h2>سرد نوش</h2>
-            <div class="menu-list">
-                <div class="menu-item standard-item">
-                    <span class="item-name">چای سرد دم</span>
-                    <span class="item-price">۲۵۰</span>
-                </div>
-            </div>
-        </section>
+            <section class="menu-category reveal-section">
+                <h2>کلد برو</h2>
+                <ul>
+                    <li>کلد برو کلاسیک</li>
+                    <li>کلد فرنزی</li>
+                    <li>کلد برو انبه</li>
+                    <li>کلد برو آیریش</li>
+                </ul>
+            </section>
+
+            <section class="menu-category reveal-section">
+                <h2>سرد نوش</h2>
+                <ul>
+                    <li>چای سرد دم</li>
+                </ul>
+            </section>
+
+        </div>
 
     </main>
 
+    <footer class="site-footer">
+        <a href="index.html">دم</a>
+        <span>شیراز</span>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
