@@ -9,7 +9,7 @@
     body.menu-page { background: #16130f; }
 }
 
-/* Same video + veil as the index page, fixed behind the list and blurred */
+/* fixed behind the list and blurred */
 .menu-bg {
     position: fixed;
     inset: 0;
@@ -23,7 +23,7 @@
 }
 
 .menu-bg .motion-video {
-    filter: blur(14px) saturate(0.55) brightness(0.5);
+    filter: blur(5px) saturate(0.6) brightness(0.65) contrast(1.1);
     transform: scale(1.1);
 }
 
